@@ -3,6 +3,7 @@ package com.luv2code.junitdemo;
 import org.junit.jupiter.api.*;
 
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -75,7 +76,33 @@ class DemoUtilsTests {
 
     }
 
+    @DisplayName("Array Equals")
+    @Test
+    void testArrayEquals()
+    {
+        String[] stringArray = {"A","B","C"};
 
+        assertArrayEquals(stringArray,demoUtils.getFirstThreeLettersOfAlphabet(), "Arrays should be the same");
+
+    }
+
+
+    @DisplayName("Iterable equals")
+    @Test
+    void testIterableEquals()
+    {
+        List<String> theList = List.of("luv","2","code");
+        assertIterableEquals(theList, demoUtils.getAcademyInList(),"Expect list should be same as actual list");
+    }
+
+    @Test
+    @DisplayName("Lines match")
+    void testLinesMatch()
+    {
+        List<String> theList = List.of("luv","2","code");
+
+        assertLinesMatch(theList, demoUtils.getAcademyInList(), "Lines should match");
+    }
 
 /*
 

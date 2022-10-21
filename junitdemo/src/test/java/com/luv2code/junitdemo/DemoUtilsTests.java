@@ -7,19 +7,47 @@ import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class DemoUtilsTests {
 
     private static final Logger logger = Logger.getLogger(DemoUtilsTests.class.getName());
 
     DemoUtils demoUtils;
 
+
     @BeforeEach
     void setupBeforeEach()
     {
-         demoUtils = new DemoUtils();
-        logger.info("@BeforeEach: executes before the execution of each test method");
-
+        demoUtils = new DemoUtils();
     }
+
+
+
+
+
+     @Test
+    // @DisplayName("Equals and not Equals")
+     void test_Equals_And_Not_Equals()
+     {
+         assertEquals(6, demoUtils.add(2,4), "2 + 4 must be 6");
+         assertNotEquals(6, demoUtils.add(1,9), "1+9 must not be 6");
+     }
+
+
+     @Test
+//     @DisplayName("Null and not Null")
+     void test_Null_And_Not_Null()
+     {
+         String str1 = null;
+         String str2 = "luv2code";
+
+         assertNull(demoUtils.checkNull(str1), "Object should be null");
+         assertNotNull(demoUtils.checkNull(str2), "Object should not be null");
+     }
+
+/*
 
 
     @AfterEach
@@ -38,7 +66,6 @@ class DemoUtilsTests {
 
     }
 
-
     @AfterAll
     static //executed only once, after all test methods
     void tearDownAfterAll()
@@ -47,35 +74,6 @@ class DemoUtilsTests {
 
     }
 
+    */
 
-     @Test
-     void testEqualsAndNotEquals()
-     {
-
-
-         logger.info("Running test:  testEqualsAndNotEquals");
-
-      //   DemoUtils demoUtils = new DemoUtils();
-
-         assertEquals(6, demoUtils.add(2,4), "2 + 4 must be 6");
-         assertNotEquals(6, demoUtils.add(1,9), "1+9 must not be 6");
-
-     }
-
-
-     @Test
-     void testNullAndNotNull()
-     {
-
-         logger.info("Running test:  testNullAndNotNull");
-
-        // DemoUtils demoUtils = new DemoUtils();
-
-
-         String str1 = null;
-         String str2 = "luv2code";
-
-         assertNull(demoUtils.checkNull(str1), "Object should be null");
-         assertNotNull(demoUtils.checkNull(str2), "Object should not be null");
-     }
 }

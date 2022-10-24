@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/1-luv2code-Spring-Boot-Unit-Testing-with-JUnit.iml" filepath="$PROJECT_DIR$/.idea/1-luv2code-Spring-Boot-Unit-Testing-with-JUnit.iml" />
-      <module fileurl="file://$PROJECT_DIR$/junitdemo/junitdemo.iml" filepath="$PROJECT_DIR$/junitdemo/junitdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1-junitdemo/junitdemo.iml" filepath="$PROJECT_DIR$/1-junitdemo/junitdemo.iml" />
     </modules>
   </component>
 </project>

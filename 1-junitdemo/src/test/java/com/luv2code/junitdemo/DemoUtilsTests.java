@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 //@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class DemoUtilsTests {
 
     private static final Logger logger = Logger.getLogger(DemoUtilsTests.class.getName());
@@ -30,7 +33,8 @@ class DemoUtilsTests {
 
 
      @Test
-    @DisplayName("Equals and not Equals")
+     @DisplayName("Equals and not Equals")
+     @Order(1)
      void test_Equals_And_Not_Equals()
      {
          assertEquals(6, demoUtils.add(2,4), "2 + 4 must be 6");
@@ -39,7 +43,8 @@ class DemoUtilsTests {
 
 
      @Test
-  @DisplayName("Null and not Null")
+     @DisplayName("Null and not Null")
+     @Order(0)
      void test_Null_And_Not_Null()
      {
          String str1 = null;
@@ -66,6 +71,7 @@ class DemoUtilsTests {
 
     @DisplayName("True and False")
     @Test
+    @Order(30)
     void testTrueFalse()
     {
         int gradeOne = 10;
@@ -98,6 +104,7 @@ class DemoUtilsTests {
 
     @Test
     @DisplayName("Lines match")
+    @Order(50)
     void testLinesMatch()
     {
         List<String> theList = List.of("luv","2","code");

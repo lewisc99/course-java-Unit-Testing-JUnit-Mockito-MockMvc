@@ -29,7 +29,7 @@ public class DemoUtils {
     }
 
     public int multiply(int a, int b) {
-        return a * b;
+        return a * b * b;
     }
 
     public Object checkNull(Object obj) {

@@ -21,7 +21,7 @@ public class FizzBuzz {
 
         return result.toString();
     }
-    
+
 //    public static String compute(int number) {
 
 //        if ((number % 3 == 0) && (number % 5 == 0))

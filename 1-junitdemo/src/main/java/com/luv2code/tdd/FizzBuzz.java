@@ -8,7 +8,11 @@ public class FizzBuzz {
     //if number is not divisible by 3 and 5, then print the number
     public static String compute(int number) {
 
-        if (number % 3 == 0 )
+        if ((number % 3 == 0) && (number % 5 == 0))
+        {
+            return "FizzBuzz";
+        }
+        else if (number % 3 == 0 )
         {
             return "Fizz";
         }
@@ -16,6 +20,9 @@ public class FizzBuzz {
         {
             return "Buzz";
         }
-        return null;
+        else {
+            return Integer.toString(number);
+        }
+
     }
 }

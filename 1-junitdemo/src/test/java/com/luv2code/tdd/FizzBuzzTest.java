@@ -3,6 +3,7 @@ package com.luv2code.tdd;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class FizzBuzzTest {
@@ -17,7 +18,18 @@ public class FizzBuzzTest {
     @DisplayName("Divisible by three")
     void testForDivisibleByThree()
     {
-        fail("Fail");
+       String expected = "Fizz";
+
+       assertEquals(expected, FizzBuzz.compute(3),"Should return Fizz");
+    }
+
+    @Test
+    @DisplayName("Divisible by five")
+    void testForDivisibleByFive()
+    {
+        String expected = "Buzz";
+
+        assertEquals(expected, FizzBuzz.compute(5),"Should return Buzz");
     }
 
 }

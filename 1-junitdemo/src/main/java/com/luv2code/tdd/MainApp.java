@@ -9,5 +9,6 @@ public class MainApp {
            // System.out.println(i + "," + FizzBuzz.compute(i));
             System.out.println(FizzBuzz.compute(i));
         }
+
     }
 }

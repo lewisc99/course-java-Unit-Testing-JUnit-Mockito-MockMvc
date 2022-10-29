@@ -4,5 +4,7 @@
     <file url="file://$PROJECT_DIR$/1-junitdemo/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/1-junitdemo/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/2-starting-junit/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/3-mocking-with-Mockito/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/3-mocking-with-Mockito/src/main/resources" charset="UTF-8" />
   </component>
 </project>

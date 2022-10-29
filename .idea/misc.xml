@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/junitdemo/pom.xml" />
         <option value="$PROJECT_DIR$/1-junitdemo/pom.xml" />
         <option value="$PROJECT_DIR$/2-starting-junit/pom.xml" />
+        <option value="$PROJECT_DIR$/3-mocking-with-Mockito/pom.xml" />
       </list>
     </option>
   </component>

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/1-luv2code-Spring-Boot-Unit-Testing-with-JUnit.iml" filepath="$PROJECT_DIR$/.idea/1-luv2code-Spring-Boot-Unit-Testing-with-JUnit.iml" />
       <module fileurl="file://$PROJECT_DIR$/1-junitdemo/junitdemo.iml" filepath="$PROJECT_DIR$/1-junitdemo/junitdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/4-springbootmvc-unit-project/spring-boot-mvc-testing-demo.iml" filepath="$PROJECT_DIR$/4-springbootmvc-unit-project/spring-boot-mvc-testing-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/2-starting-junit/spring-boot-unit-testing-demo.iml" filepath="$PROJECT_DIR$/2-starting-junit/spring-boot-unit-testing-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/3-mocking-with-Mockito/spring-boot-unit-testing-demo (1).iml" filepath="$PROJECT_DIR$/3-mocking-with-Mockito/spring-boot-unit-testing-demo (1).iml" />
     </modules>

@@ -10,6 +10,6 @@ import java.util.Collection;
 @Repository
 public interface StudentDao extends CrudRepository<CollegeStudent, Integer> {
 
-
+    public CollegeStudent findByEmailAddress(String emailAddress);
 
 }

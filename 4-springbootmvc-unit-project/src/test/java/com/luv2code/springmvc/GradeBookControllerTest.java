@@ -150,4 +150,17 @@ public class GradeBookControllerTest {
 
     }
 
+    @Test
+    public void deleteStudentHttpRequestErrorPage() throws Exception
+    {
+        //should throw an error because we don't have id 0
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
+                .get("/delete/student/{id}",0))
+                .andExpect(status().isOk()).andReturn();
+
+        ModelAndView  modelAndView = mvcResult.getModelAndView();
+
+        ModelAndViewAssert.assertViewName(modelAndView, "error");
+    }
+
 }

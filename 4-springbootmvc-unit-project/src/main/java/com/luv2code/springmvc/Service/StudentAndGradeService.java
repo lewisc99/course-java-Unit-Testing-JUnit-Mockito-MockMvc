@@ -48,4 +48,9 @@ public class StudentAndGradeService {
         return collegeStudents;
     }
 
+    public boolean createGrade(double grade, int studentId, String gradeType)
+    {
+        return false;
+    }
+
 }

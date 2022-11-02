@@ -129,6 +129,16 @@ public class StudentAndGradeServiceTest {
         assertTrue(historyGrades.iterator().hasNext());
     }
 
+    @Test
+    public void createGradeServiceReturnFalse()
+    {
+        assertFalse(studentService.createGrade(105,1, "math"));
+        assertFalse(studentService.createGrade(-5,1,"math"));
+        //invalid id because we only have id one in beforeEach
+        assertFalse(studentService.createGrade(80.50,2,"math"));
+        assertFalse(studentService.createGrade(80.50,1,"Literature"));
+    }
+
 
 
 

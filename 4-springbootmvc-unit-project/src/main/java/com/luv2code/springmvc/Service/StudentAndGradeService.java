@@ -1,10 +1,7 @@
 package com.luv2code.springmvc.Service;
 
 
-import com.luv2code.springmvc.models.CollegeStudent;
-import com.luv2code.springmvc.models.HistoryGrade;
-import com.luv2code.springmvc.models.MathGrade;
-import com.luv2code.springmvc.models.ScienceGrade;
+import com.luv2code.springmvc.models.*;
 import com.luv2code.springmvc.repository.HistoryGradesDao;
 import com.luv2code.springmvc.repository.MathGradesDao;
 import com.luv2code.springmvc.repository.ScienceGradeDao;
@@ -160,5 +157,9 @@ public class StudentAndGradeService {
         return studentId;
     }
 
+    public GradebookCollegeStudent studentInformation(int id)
+    {
+        return null;
+    }
 
 }

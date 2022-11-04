@@ -1,12 +1,15 @@
 package com.luv2code.springmvc;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.luv2code.springmvc.models.CollegeStudent;
 import com.luv2code.springmvc.repository.HistoryGradesDao;
 import com.luv2code.springmvc.repository.MathGradesDao;
 import com.luv2code.springmvc.repository.ScienceGradesDao;
 import com.luv2code.springmvc.repository.StudentDao;
 import com.luv2code.springmvc.service.StudentAndGradeService;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -14,9 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.web.servlet.MockMvc;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -82,6 +87,29 @@ public class GradebookControllerTest {
     @Value("${sql.script.delete.history.grade}")
     private String sqlDeleteHistoryGrade;
 
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    ObjectMapper objectMapper;
+
+    @Autowired
+    private CollegeStudent student;
+
+    public static final MediaType APPLICATION_JSON_UTF8 = MediaType.APPLICATION_JSON;
+
+
+
+    @BeforeAll
+    public static void setup()
+    {
+        request = new MockHttpServletRequest();
+
+        request.setParameter("firstname","Chad");
+        request.setParameter("lastname","Darby");
+        request.setParameter("emailAddress","chad.darby@luvcode_school.com");
+    }
+
     @BeforeEach
     public void setupDatabase() {
         jdbc.execute(sqlAddStudent);
@@ -90,11 +118,7 @@ public class GradebookControllerTest {
         jdbc.execute(sqlAddHistoryGrade);
     }
 
-    @Test
-    public void placeHolder()
-    {
-
-    }
+  
 
 
     @AfterEach

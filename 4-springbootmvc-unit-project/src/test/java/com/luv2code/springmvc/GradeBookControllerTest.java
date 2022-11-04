@@ -188,14 +188,7 @@ public class GradeBookControllerTest {
 
         ModelAndViewAssert.assertViewName(modelAndView, "error");
     }
-    @AfterEach
-    public void setupAfterTransaction()
-    {
-        jdbc.execute(sqlDeleteStudent);
-        jdbc.execute(sqlDeleteMathGrade);
-        jdbc.execute(sqlDeleteScienceGrade);
-        jdbc.execute(sqlDeleteHistoryGrade);
-    }
+
 
     @Test
     public void studentInformationHttpRequest() throws Exception
@@ -262,4 +255,30 @@ public class GradeBookControllerTest {
         ModelAndViewAssert.assertViewName(modelAndView, "error");
     }
 
+
+    @Test
+    public void createNonValidGradeHttpRequestGradeTypeDoesNotExistEmptyResponse() throws Exception
+    {
+        MvcResult mvcResult = this.mockMvc.perform(post("/grades")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("grade","85.00")
+                .param("gradeType","literature")
+                .param("studentId","1"))
+                .andExpect(status().isOk()).andReturn();
+
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+
+        ModelAndViewAssert.assertViewName(modelAndView, "error");
+
+    }
+
+
+    @AfterEach
+    public void setupAfterTransaction()
+    {
+        jdbc.execute(sqlDeleteStudent);
+        jdbc.execute(sqlDeleteMathGrade);
+        jdbc.execute(sqlDeleteScienceGrade);
+        jdbc.execute(sqlDeleteHistoryGrade);
+    }
 }

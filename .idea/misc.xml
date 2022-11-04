@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/2-starting-junit/pom.xml" />
         <option value="$PROJECT_DIR$/3-mocking-with-Mockito/pom.xml" />
         <option value="$PROJECT_DIR$/4-springbootmvc-unit-project/pom.xml" />
+        <option value="$PROJECT_DIR$/5-springboot-restapi-student-grade/pom.xml" />
       </list>
     </option>
   </component>

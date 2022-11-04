@@ -82,6 +82,9 @@ public class GradeBookControllerTest {
     @Value("${sql.script.delete.history.grade}")
     private String sqlDeleteHistoryGrade;
 
+    @Autowired
+    private StudentAndGradeService studentAndGradeService;
+
     @BeforeAll
     public static void setup()
     {
@@ -218,6 +221,29 @@ public class GradeBookControllerTest {
         ModelAndView modelAndView = mvcResult.getModelAndView();
 
         ModelAndViewAssert.assertViewName(modelAndView, "error");
+
+    }
+
+
+    @Test
+    public void createValidGradeHttpRequest() throws Exception {
+
+        assertTrue(studentDao.findById(1).isPresent());
+
+        GradebookCollegeStudent student  = studentAndGradeService.studentInformation(1);
+
+        assertEquals(1,student.getStudentGrades().getMathGradeResults().size());
+
+        MvcResult mvcResult = this.mockMvc.perform(post("/grades")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("grade","85.00")
+                .param("gradeType","math")
+                .param("studentId","1")).andExpect(status().isOk()).andReturn();
+
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+        student = studentAndGradeService.studentInformation(1);
+
+        assertEquals(2,student.getStudentGrades().getMathGradeResults().size());
 
     }
 

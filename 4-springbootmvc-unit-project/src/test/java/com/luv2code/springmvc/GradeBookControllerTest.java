@@ -4,6 +4,8 @@ package com.luv2code.springmvc;
 import com.luv2code.springmvc.Service.StudentAndGradeService;
 import com.luv2code.springmvc.models.CollegeStudent;
 import com.luv2code.springmvc.models.GradebookCollegeStudent;
+import com.luv2code.springmvc.models.MathGrade;
+import com.luv2code.springmvc.repository.MathGradesDao;
 import com.luv2code.springmvc.repository.StudentDao;
 import org.aspectj.lang.annotation.After;
 import org.junit.jupiter.api.AfterEach;
@@ -28,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -84,6 +87,9 @@ public class GradeBookControllerTest {
 
     @Autowired
     private StudentAndGradeService studentAndGradeService;
+
+    @Autowired
+    private MathGradesDao mathGradesDao;
 
     @BeforeAll
     public static void setup()
@@ -269,6 +275,26 @@ public class GradeBookControllerTest {
         ModelAndView modelAndView = mvcResult.getModelAndView();
 
         ModelAndViewAssert.assertViewName(modelAndView, "error");
+
+    }
+
+    @Test
+    public void deleteAValidGradeHttpRequest() throws Exception
+    {
+        Optional<MathGrade> mathGrade = mathGradesDao.findById(1);
+
+        assertTrue(mathGrade.isPresent());
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/grades/{id}/{gradeType}",1,"math"))
+                .andExpect(status().isOk()).andReturn();
+
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+
+        ModelAndViewAssert.assertViewName(modelAndView, "studentInformation");
+
+        mathGrade = mathGradesDao.findById(1);
+
+        assertFalse(mathGrade.isPresent());
 
     }
 

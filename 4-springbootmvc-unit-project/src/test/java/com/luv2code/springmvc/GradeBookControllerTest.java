@@ -30,6 +30,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -192,4 +193,32 @@ public class GradeBookControllerTest {
         jdbc.execute(sqlDeleteScienceGrade);
         jdbc.execute(sqlDeleteHistoryGrade);
     }
+
+    @Test
+    public void studentInformationHttpRequest() throws Exception
+    {
+        assertTrue(studentDao.findById(1).isPresent());
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/studentInformation/{id}",1))
+                .andExpect(status().isOk()).andReturn();
+
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+
+        ModelAndViewAssert.assertViewName(modelAndView, "studentInformation");
+    }
+
+    @Test
+    public void studentInformationHttpStudentDoesNotExistRequest() throws Exception
+    {
+        assertFalse(studentDao.findById(0).isPresent());
+
+        MvcResult mvcResult =  mockMvc.perform(MockMvcRequestBuilders.get("/studentInformation/{id}",0))
+                .andExpect(status().isOk()).andReturn();
+
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+
+        ModelAndViewAssert.assertViewName(modelAndView, "error");
+
+    }
+
 }

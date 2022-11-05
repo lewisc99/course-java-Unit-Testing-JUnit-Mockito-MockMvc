@@ -29,6 +29,8 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
@@ -138,6 +140,23 @@ public class GradebookControllerTest {
                 .andExpect(jsonPath("$",hasSize(2)));
     }
 
+
+    @Test
+    public void createStudentHttpRequest() throws Exception
+    {
+        student.setFirstname("Chad");
+        student.setLastname("Darby");
+        student.setEmailAddress("chad_darby@luvcode_school.com");
+
+        mockMvc.perform(post("/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(student)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$",hasSize(2)));
+
+        CollegeStudent verifyStudent = studentDao.findByEmailAddress("chad_darby@luvcode_school.com");
+        assertNotNull(verifyStudent, "Student Should be valid");
+    }
 
     @AfterEach
     public void setupAfterTransaction() {
